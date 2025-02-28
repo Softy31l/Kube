@@ -1,0 +1,25 @@
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mysql
+  labels:
+    app: mysql
+spec:
+  containers:
+  - name: mysql
+    image: mysql:latest
+
+    env:
+     - name: MYSQL_USER
+       value: kube
+     - name: MYSQL_PASSWORD
+       value: kube*
+     - name:  MYSQL_DATABASE
+       value: kube
+     - name: MYSQL_ROOT_PASSWORD
+       value: root
+
+    ports:
+     - containerPort: 3306
+
