@@ -126,6 +126,7 @@ contacter et administrer votre base de données mysql
 ```
 $ kubectl port-forward pod/phpmyadmin 8080:80
 ```
-`TP1/TP1_Kube_PHP.png`
+![TP1_Kube_PHP](https://github.com/user-attachments/assets/2a41998d-3a91-4752-b592-021be83e9dcf)
+
 
 
