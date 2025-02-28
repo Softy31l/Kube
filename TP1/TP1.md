@@ -120,11 +120,12 @@ spec:
 ```
 ##c. Connecter phpmyadmin avec le Service mysql
 On connecte le pod phpmyadmin grace au PMA_HOST dans lequel on vient renseigner le label du service Mysql
+
 ##d. Avec la commande kubectl-port forward, vérifier que phpmyadmin arrive à
 contacter et administrer votre base de données mysql
 ```
 $ kubectl port-forward pod/phpmyadmin 8080:80
 ```
-(TP1/TP1_Kube_PHP.png)
+`TP1/TP1_Kube_PHP.png`
 
 
