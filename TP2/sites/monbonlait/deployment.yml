@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: monbonlait
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: monbonlait
+  template:
+    metadata:
+      labels:
+        app: monbonlait
+    spec:
+      containers:
+        - name: monbonlait
+          image: ynov31/nginx-monbonlait:latest
+          ports:
+            - containerPort: 80
