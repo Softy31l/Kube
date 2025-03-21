@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: job-curl-and-list
+  namespace: web
+spec:
+  template:
+    spec:
+      serviceAccountName: webmaster
+      containers:
+      - name: curl-nginx
+        image: curlimages/curl
+        command: ["/bin/sh"]
+        args:
+          - "-c"
+          - |
+            echo "🔁 Curl nginx && list pods :"
+            NGINX_IP=$(getent hosts nginx | awk '{ print $1 }')
+            curl -s http://$NGINX_IP
+            echo "📦 Pods in namespace web:"
+            kubectl get pods -n web
+      restartPolicy: Never
+

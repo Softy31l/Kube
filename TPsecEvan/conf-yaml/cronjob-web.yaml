@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: cron-curl-list
+  namespace: web
+spec:
+  schedule: "*/1 * * * *"  # Toutes les 1 min (pas 5 sec, limitation de Kubernetes)
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          serviceAccountName: webmaster
+          containers:
+          - name: curl-nginx
+            image: curlimages/curl
+            command: ["/bin/sh"]
+            args:
+              - "-c"
+              - |
+                NGINX_IP=$(getent hosts nginx | awk '{ print $1 }')
+                curl -s http://$NGINX_IP
+                echo "Pods in namespace web:"
+                kubectl get pods -n web
+          restartPolicy: Never
+
